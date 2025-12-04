@@ -22,7 +22,7 @@ def get_db_connection():
         database=DB_NAME,
         cursorclass=DictCursor,
         charset="utf8mb4",
-        autocommit=True,  # aman untuk CALL/SELECT; hapus jika Anda ingin commit manual
+        autocommit=True,
     )
     try:
         yield conn

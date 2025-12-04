@@ -6,10 +6,17 @@ from app.db import get_db_connection
 from pymysql import OperationalError
 from app.models.api_response import SuccessResponse, ErrorResponse
 from app.routes.auth import router as auth_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="MBD Praktikum FastApi Backend")
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/health")
 async def health_check():
